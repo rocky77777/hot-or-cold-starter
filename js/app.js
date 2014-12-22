@@ -2,12 +2,22 @@
 $(document).ready(function(){
 
 
-	var newNumber = function() {
 	var x = Math.floor((Math.random() * 100) + 1);
 	console.log(x);
-	};
 
-	newNumber();
+
+	$("#guessButton").on("click", function () {
+		var guess = $("#userGuess").val();
+		if (guess < x) {
+			$("#feedback").text(guess + " is low");
+		}
+		else if (userGuess > x) {
+			$("#feedback").text(guess + " is high");
+		}
+		else if (userGuess == x) {
+			$("#feedback").text(guess + " is perfect");
+		}
+	});
 
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
@@ -20,10 +30,13 @@ $(document).ready(function(){
   		$(".overlay").fadeOut(1000);
   	});
 
-	/*--- TO generate a random number when new game is clicked ---*/
-  	$(".new").click(newNumber);
+	/*--- TO generate a random number when NEW GAME is clicked ---*/
 
-
+	// $("#new").click(function() {
+	// 	var x = Math.floor((Math.random() * 100) + 1);
+	// 	console.log(x);
+	//  });
+  	
 
 });
 
