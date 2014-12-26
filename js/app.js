@@ -5,18 +5,26 @@ $(document).ready(function(){
 	var x = Math.floor((Math.random() * 100) + 1);
 	console.log(x);
 
+	$(".new").click(function() {
+	x = Math.floor((Math.random() * 100) + 1);
+	console.log(x);
+	});
 
-	$("#guessButton").on("click", function () {
+
+	$("#guessButton").on("click", function (event) {
 		var guess = $("#userGuess").val();
 		if (guess < x) {
 			$("#feedback").text(guess + " is low");
 		}
-		else if (userGuess > x) {
+		else if (guess > x) {
 			$("#feedback").text(guess + " is high");
 		}
-		else if (userGuess == x) {
+		else if (guess == x) {
 			$("#feedback").text(guess + " is perfect");
+			x = Math.floor((Math.random() * 100) + 1);
+			console.log(x);	
 		}
+		event.preventDefault();
 	});
 
 	/*--- Display information modal box ---*/
@@ -32,10 +40,7 @@ $(document).ready(function(){
 
 	/*--- TO generate a random number when NEW GAME is clicked ---*/
 
-	// $("#new").click(function() {
-	// 	var x = Math.floor((Math.random() * 100) + 1);
-	// 	console.log(x);
-	//  });
+
   	
 
 });
