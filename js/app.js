@@ -36,9 +36,7 @@ $(document).ready(function(){
 				$("#feedback").text(guess + " is high and cold.");
 		}
 		else if (guess == x) {
-			$("#feedback").text(guess + " is perfect");
-			x = Math.floor((Math.random() * 100) + 1);
-			console.log(x);	
+			$("#feedback").text(guess + " is perfect. Click on NEW GAME to play again!");
 		}
 	});
 
