@@ -1,18 +1,32 @@
 
 $(document).ready(function(){
 
-	/*--- Generate random number when page loads ---*/
-	var x = Math.floor((Math.random() * 100) + 1);
-	console.log(x);
-	/*--- Generate random number when NEW GAME is clicked ---*/
-	$(".new").click(function() {
-	x = Math.floor((Math.random() * 100) + 1);
-	console.log(x);
-	});
+	var x;
+	var guessCount = 0;
+	
+	function init() {
+		x = Math.floor((Math.random() * 100) + 1);
+		$("#feedback").text("Make your Guess");
+		$("#guessList").find("li").remove();
+		$("form")[0].reset();
+		$("#count").text("0");
+		guessCount = 0;
+		console.log(x);
+	}
 
+	/*--- Generate random number when page loads ---*/
+	init();
+
+
+	/*--- Generate random number and reset game when NEW GAME is clicked ---*/
+	$(".new").click(function() {
+	init(); 
+	});
 
 	$("#guessButton").on("click", function (event) {
 		var guess = $("#userGuess").val();
+		guessCount++;
+		$("#count").text(guessCount);
 		$("#guessList").append("<li>" + guess + "</li>");
 		event.preventDefault();
 		if (guess < x) {
